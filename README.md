@@ -4,7 +4,7 @@
   </head>
   
   <body>
-    <p>Dew it</p>
-    <p>[Intensifies]</p>
-  </body></html>
+    <h1>*Blog*ging out</h1>
+  </body>
+</html>
 
