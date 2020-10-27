@@ -22,25 +22,30 @@
 			
 			h1, h2, h3, h4, h5, h6{
 				font-family: Arial, Helvetica, sans-serif;
-			}
-			
-			h1{
-				font-size: 2.2em;
+				font-size  : 2.2em;
+				color      : #C78951;
 			}
 			
 			p{
 				font-size: 1.6em;
+				color    : white;
+			}
+			
+			a{
+				font-size  : 1.6em;
+				color      : #B0A8A5;
+				font-family: Arial, Helvetica, sans-serif;
 			}
 			
 			body{
 				background-color: #DFB387;
-				padding-left    : 16%;
-				padding-right   : 16%;
+				padding-left    : 8%;
+				padding-right   : 8%;
 			}
 
 			#title{
 				text-align     : center;
-				font-size      : 32px;
+				font-size      : 4.4em;
 				margin-top     : 16%;
 				margin-bottom  : 16%;
 			}
@@ -49,32 +54,61 @@
 				border      : 2px solid #1D100E;
 				margin-left : 28%;
 				margin-right: 28%;
+				color       : #1D100E;
 			}
 			
 			#caixa{
 				background-color: #1D100E;
-				padding         : 4%;
-				border-radius   : 1%;
+				box-shadow      : 12px 12px 0px #B0A8A5;
+				border-radius   : 12px;
+				display         : grid;
 			}
 			
-			#caixa h1{
-				color: #C78951;
+			#caixa nav ul {
+				list-style-type : none;
+				margin          : 0;
+				padding         : 0;
+				overflow        : hidden;
+				background-color: #964F28;
+				border-radius   : 10px;
 			}
 			
-			#caixa p{
-				color: #B0A8A5;
+			#caixa nav li {
+				float: left;
+			}
+			
+			#caixa nav li a {
+				display        : block;
+				color          : white;
+				text-align     : center;
+				padding        : 14px 16px;
+				text-decoration: none;
+			}
+			
+			#caixa nav li a:hover:not(.active) {
+				background-color: #C78951;
+			}
+			
+			#caixa nav .active {
+				background-color: #C78951;
 			}
 		</style>
 	</head>
 
 	<body>
 		<div id= "title">
-			<h1>Hmm yes, title</h1>
+			<h1>JAPL</h1>
 		</div>
 		
 		<div id= "caixa">
-			<h1> test </h1>
-			<p>test</p>
+			<nav>
+				<ul>
+					<li><a class="active" href="#home">[ home ]</a></li>
+					<li><a href="#contactos">[ contactos ]</a></li>
+				</ul>
+			</nav>
+			
+			<p> teste </p>
 		</div>
 	</body>
 </html>
