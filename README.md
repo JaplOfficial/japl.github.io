@@ -2,6 +2,9 @@
   
   <head>
     <title>bruv</title>
+    <styles>
+          //Yes
+    </styles>
   </head>
   
   <body>
