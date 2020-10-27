@@ -1,14 +1,13 @@
 <html>
   
   <head>
-    <title>bruv</title>
     <style>
-          //Yes
+      h1{ display: none }
     </style>
   </head>
   
   <body>
-    <h1>*Blog*ging out</h1>
+    <p>*Blog*ging out</p>
   </body>
 </html>
 
