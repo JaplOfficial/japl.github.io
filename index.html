@@ -28,7 +28,7 @@
 			
 			p{
 				font-size: 1.6em;
-				color    : white;
+				color    : #B0A8A5;
 			}
 			
 			a{
@@ -61,7 +61,6 @@
 				background-color: #1D100E;
 				box-shadow      : 12px 12px 0px #B0A8A5;
 				border-radius   : 12px;
-				display         : grid;
 			}
 			
 			#caixa nav ul {
@@ -92,6 +91,17 @@
 			#caixa nav .active {
 				background-color: #C78951;
 			}
+			
+			#caixa #grid{
+				padding              : 4%;
+				display              : grid;
+				grid-template-columns: 32% auto;
+			}
+			
+			#caixa #grid #sobreMim{
+				border-right: 2px solid #964F28;
+				
+			}
 		</style>
 	</head>
 
@@ -104,11 +114,19 @@
 			<nav>
 				<ul>
 					<li><a class="active" href="#home">[ home ]</a></li>
-					<li><a href="#contactos">[ contactos ]</a></li>
+					<li><a href="#aaaaa">[ aaaaa ]</a></li>
 				</ul>
 			</nav>
 			
-			<p> teste </p>
+			<div id="grid">
+				<div id="sobreMim">
+					<h2>It'sa me, malario</h2>
+					<img src= "yes.jpg" width= "86%" />
+				</div>
+				<div id="posts">
+					
+				</div>
+			</div>
 		</div>
 	</body>
 </html>
