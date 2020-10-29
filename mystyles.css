@@ -6,7 +6,7 @@ html{
 body{
 	margin               : 0;
 	padding              : 0;
-	background-image     : url("./images/bg1.png");
+	background-image     : url("./images/bogdan-mb0sco-coffee-shop-hdpreview.jpg");
 	background-repeat    : no-repeat;
 	background-position  : center;
 	background-attachment: fixed;
@@ -90,5 +90,5 @@ body #filtro #conteudo #navbar nav ul li a.active:hover{
 }
 
 body #filtro #conteudo #main{
-	padding: 4% 16% 16% 16%;
+	padding: 4% 16%;
 }
