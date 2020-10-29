@@ -7,7 +7,7 @@ html{
 body{
 	margin               : 0;
 	padding              : 0;
-	background-image     : url("./images/bogdan-mb0sco-coffee-shop-hdpreview.jpg");
+	background-image     : url("./images/bogdan-mb0sco-jazzhopcafef-exampleanim.gif");
 	background-repeat    : no-repeat;
 	background-position  : center;
 	background-attachment: fixed;
@@ -17,6 +17,10 @@ body{
 h1, h2, h3, h4, h5, h6{
 	font-family: Arial, Helvetica, sans-serif;
 	color      : #A65E4E;
+}
+
+h1 {
+	
 }
 
 p{
@@ -106,8 +110,4 @@ body #conteudo #main #resumo{
 	border-left : 2px solid #8B7B78;
 	padding-left: 4%;
 	text-align  : justify;
-}
-
-body #conteudo #main #resumo h1{
-	text-align: center;
 }
