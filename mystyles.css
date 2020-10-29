@@ -107,3 +107,7 @@ body #conteudo #main #resumo{
 	padding-left: 4%;
 	text-align  : justify;
 }
+
+body #conteudo #main #resumo h1{
+	text-align: center;
+}
