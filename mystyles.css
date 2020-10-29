@@ -1,7 +1,6 @@
 /* TITLE */
 html{
 	scroll-behavior: smooth;
-	overflow-y     : scroll;
 }
 
 body{
@@ -29,10 +28,12 @@ a, a:link, a:visited, a:hover, a:active{
 }
 
 body #filtro{
-	background-color: rgba(139, 123, 120, 0.4);
-	position        : fixed;
-	width           : 100%;
-	height          : 100%;
+	background-color     : rgba(139, 123, 120, 0.4);
+	background-attachment: fixed;
+	background-size      : cover;
+	position             : fixed;
+	width                : 100%;
+	height               : 100%;
 }
 
 body #filtro #titulo{
