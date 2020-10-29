@@ -1,7 +1,7 @@
 /* TITLE */
 html{
 	scroll-behavior: smooth;
-    overflow-x     : hidden;
+	overflow-x     : hidden;
 }
 
 body{
@@ -30,11 +30,11 @@ a, a:link, a:visited, a:hover, a:active{
 
 body #filtro{
 	background-color     : rgba(139, 123, 120, 0.4);
-    background-position  : fixed;
-    background-size      : cover;
+	background-position  : fixed;
+	background-size      : cover;
 	width                : 100vw;
 	height               : 67.5%;
-    top                  : 0px;
+	top                  : 0px;
 }
 
 body #titulo{
@@ -52,7 +52,7 @@ body #titulo h1{
 
 body #conteudo{
 	background-color: #474F59;
-    width           : 100%;
+	width           : 100%;
 }
 
 body #conteudo #navbar nav ul{
@@ -92,18 +92,18 @@ body #conteudo #navbar nav ul li a.active:hover{
 
 body #conteudo #main{
 	padding              : 4% 16%;
-    height               : 100%;
-    display              : grid;
-    grid-template-columns: 69% auto;
+	height               : 100%;
+	display              : grid;
+	grid-template-columns: 69% auto;
 }
 
 body #conteudo #main #shitposting{
-    border-right : 2px solid #8B7B78;
-    padding-right: 4%;
+	border-right : 2px solid #8B7B78;
+	padding-right: 4%;
 }
 
 body #conteudo #main #resumo{
-    border-left : 2px solid #8B7B78;
-    padding-left: 4%;
-    text-align  : justify;
+	border-left : 2px solid #8B7B78;
+	padding-left: 4%;
+	text-align  : justify;
 }
