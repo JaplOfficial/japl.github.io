@@ -1,5 +1,8 @@
 /* TITLE */
-
+html{
+	scroll-behavior: smooth;
+	overflow-y     : scroll;
+}
 
 body{
 	margin               : 0;
@@ -81,8 +84,10 @@ body #filtro #conteudo #navbar nav ul li a.active{
 	color           : #8B7B78;
 }
 
-body #filtro #conteudo #navbar nav ul li a.active:hover{ color: #D9C0A3 }
+body #filtro #conteudo #navbar nav ul li a.active:hover{
+	color: #D9C0A3;
+}
 
 body #filtro #conteudo #main{
-	padding: 4% 16%;
+	padding: 4% 16% 16% 16%;
 }
