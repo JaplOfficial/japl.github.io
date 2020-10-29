@@ -1,7 +1,7 @@
-/* NUTT */
+/* TITLE */
 html{
 	scroll-behavior: smooth;
-	overflow-x     : hidden;
+    overflow-x     : hidden;
 }
 
 body{
@@ -91,6 +91,19 @@ body #conteudo #navbar nav ul li a.active:hover{
 }
 
 body #conteudo #main{
-	padding: 4% 16%;
-    height : 100%;
+	padding              : 4% 16%;
+    height               : 100%;
+    display              : grid;
+    grid-template-columns: 69% auto;
+}
+
+body #conteudo #main #shitposting{
+    border-right : 2px solid #8B7B78;
+    padding-right: 4%;
+}
+
+body #conteudo #main #resumo{
+    border-left : 2px solid #8B7B78;
+    padding-left: 4%;
+    text-align  : justify;
 }
