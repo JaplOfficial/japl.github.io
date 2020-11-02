@@ -24,7 +24,8 @@ h1 {
 }
 
 p{
-	color: #D9C0A3;
+	text-align: justify;
+	color     : #D9C0A3;
 }
 
 a, a:link, a:visited, a:hover, a:active{
@@ -109,5 +110,8 @@ body #conteudo #main #shitposting{
 body #conteudo #main #resumo{
 	border-left : 2px solid #8B7B78;
 	padding-left: 4%;
-	text-align  : justify;
+}
+
+body #conteudo #main #resumo img{
+	margin: 0% 0% 16% 0%;
 }
