@@ -10,7 +10,99 @@
 		<meta name= "viewport" content= "width=device-width, initial-scale=1.0" />
 
 		<link rel="icon" href="./images/logo/icon.png" />
-		<link rel= "stylesheet" href= "archivestyles.css" />
+		<style>
+			html{
+				scroll-behavior: smooth;
+				overflow-x     : hidden;
+			}
+
+			h1, h2, h3, h4, h5, h6{
+				font-family: Arial, Helvetica, sans-serif;
+				color      : #A65E4E;
+			}
+
+			h1 {
+
+			}
+
+			p{
+				text-align: justify;
+				color     : #D9C0A3;
+			}
+			
+			body{
+				margin               : 0;
+				padding              : 0;
+			}
+
+			body #titulo h1{
+				color     : white;
+				text-align: center;
+				font-size : 6.9em;
+			}
+
+			body #conteudo{
+				background-color: #484F57;
+				width           : 300%;
+			  padding : 0;
+			}
+
+			body #conteudo #navbar nav ul{
+				list-style-type : none;
+				margin          : 0;
+				padding         : 0;
+				overflow        : hidden;
+				background-color: #8B7B78;
+				box-shadow      : 0px 4px 69px black;
+			}
+
+			body #conteudo #navbar nav ul li{
+				float: left;
+			}
+
+			body #conteudo #navbar nav ul li a{
+				display        : block;
+				text-align     : center;
+				padding        : 16px;
+				text-decoration: none;
+				color          : #474F59;
+			}
+
+			body #conteudo #navbar nav ul li a:hover{
+				color          : #D9C0A3;
+				text-decoration: underline;
+			}
+
+			body #conteudo #navbar nav ul li a.active{
+				background-color: #474F59;
+				color           : #8B7B78;
+			}
+
+			body #conteudo #navbar nav ul li a.active:hover{
+				color: #D9C0A3;
+			}
+
+			body #conteudo #main{
+				padding              : 20% 0%;
+				height               : 100%;
+				display              : grid;
+				grid-template-columns: 69% auto;
+			}
+
+			body #conteudo #main #shitposting{
+				border-right : 2px solid #8B7B78;
+				padding-right: 4%;
+			}
+
+			body #conteudo #main #resumo{
+				border-left : 2px solid #8B7B78;
+				padding-left: 4%;
+			}
+
+			body #conteudo #main #resumo img{
+				margin: 0% 0% 16% 0%;
+			}
+		</style>
 	</head>
 
 	<body>
