@@ -150,13 +150,15 @@ int main(){
       }
       board[Y][X] = 'X'; // AI's optimal play board update
     } else { // Player's turn
+      int line, column;
       cout << "It's the player's turn !" << endl;
-      int line ,column;
-      cout << "Introduce line : ";
-      cin >> line;
-      cout << "Introduce column : ";
-      cin >> column;
-      line--, column--;
+      do {
+        cout << "Introduce line : ";
+        cin >> line;
+        cout << "Introduce column : ";
+        cin >> column;
+        line--, column--;
+      } while(board[line][column] != ' ');
       board[line][column] = 'O'; // Players's play board update
     }
     Display_Board(board); // Print board state at every turn
