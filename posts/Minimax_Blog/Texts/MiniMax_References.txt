@@ -1,0 +1,2 @@
+The Coding Train - Tic Tac Toe AI -> https://www.youtube.com/watch?v=trKjYdBASyQ
+Sebastian Lague Explanation of Minimax -> https://www.youtube.com/watch?v=l-hh51ncgDI
