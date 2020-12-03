@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> post1: japl </title>
+
+		<meta charset= "UTF-8" />
+		<meta name= "description" content= "It's ya boy Japl" />
+		<meta name= "keywords" content= "BLOG, CODING" />
+		<meta name= "author" content= "ya boi" />
+		<meta name= "viewport" content= "width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" href="./images/logo/icon.png" />
+
+		<style>
+			html{
+				scroll-behavior: smooth;
+				overflow-x     : hidden;
+			}
+
+			body{
+				margin               : 0;
+				padding              : 0;
+				background-color     : #474F59;
+			}
+
+			h1, h2, h3, h4, h5, h6{
+			  margin: 10% 0%;
+				font-family: Arial, Helvetica, sans-serif;
+				color      : #A65E4E;
+			}
+
+			p{
+				color: #D9C0A3;
+			}
+
+			a, a:link, a:visited, a:hover, a:active{
+				text-decoration: none;
+				color          : #BF8969;
+			}
+
+			body #navbar nav ul{
+				list-style-type : none;
+				margin          : 0;
+				padding         : 0;
+				overflow        : hidden;
+				background-color: #8B7B78;
+				box-shadow      : 0px 4px 69px black;
+			}
+
+			body #navbar nav ul li{
+				float: left;
+			}
+
+			body #navbar nav ul li a{
+				display        : block;
+				text-align     : center;
+				padding        : 16px;
+				text-decoration: none;
+				color          : #474F59;
+			}
+
+			body #navbar nav ul li a:hover{
+				color          : #D9C0A3;
+				text-decoration: underline;
+			}
+
+			body #navbar nav ul li a.active{
+				background-color: #474F59;
+				color           : #8B7B78;
+			}
+
+			body #navbar nav ul li a.active:hover{
+				color: #D9C0A3;
+			}
+
+			body #conteudo{
+				margin: 4% 30%;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id= "navbar">
+			<nav>
+				<ul>
+					<li><a class= "active" href="../../../index.htm">[ home ]</a></li>
+					<li><a class= "" href="../../../archives.htm">[ archives ]</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div id= "conteudo">
+			<h1>The Minimax Algorithm</h1>
+			<p style="color:grey ; font-size:20px ; font-family: Arial, Helvetica, sans-serif;">29 November 2020</p>
+
+			<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Motivation</p>
+			<p style="font-size:25px ;  text-align: justify"> I have been looking forward to getting to know a new algorithm
+																												that has been intriguing me for quite some time . I am talking
+																												about the Minimax algorithm and my main motivation to learn it
+																												was the possibility to create a program that was capable of making
+																												a smart decision in a turn-based game like tic-tac-toe , to see what kind
+																												of strategies would the program develop to maximize the chances of winning .
+																											  The use of AI algorithms to play such games dates back to the 1950s, when
+																												Alan Turing alongside David Champernowne developed the Turochamp, a program
+																												designed to play an entire game of chess against a human player. Unfortunately,
+																												due to the complexity of the algorithm, Alan Turing was never able to run his
+																												algorithm on a computer before his death, leaving an unfinished project that was
+																												not continued. Later, several new proposals were made as alternatives to Turing's
+																												original idea, amongst them Alex Bernstein's program , developed to work on the
+																												IBM704 computer, which was very powerful for the time being. </p>
+
+			<video width=100% style="border-radius:25px" poster="Images/thumbnail_chess.jpg" controls>
+  	    <source src="Videos/chessIBM704.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+
+			<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">What is Minimax</p>
+			<p style="font-size:25px ; text-align: justify">Minimax is a recursive backtracking algorithm normally used in
+				 																							the development of AI agents capable of playing turn-based zero-sum
+																											games (games in which one player's win is offset by the loss of another
+																											player , for instance the victory of a player in tic-tac-toe implies the
+																											loss of the other ) consisting of at least two players, such as tic-tac-toe,
+																											chess, checkers,  connect four and others.</p>
+			<p style="font-size:25px ; text-align: justify">
+																											The Minimax algorithm works in the following way . We have two types of players, the
+																											maximizer which represents the AI and aims to maximize the chances of winning, and the
+																											minimizer which represents the opponent and will do everything possible to minimize
+																										  the AI's chances of winning , assuming that both players play optimally so that the AI
+																											doesn’t miss any clever corner case that would lead to defeat . It is important to note
+																											that these two types of players are hypothetical and the algorithm mimics them to simulate
+																											what the next best move will be . The algorithm does this by foreseeing all possible game
+																											states some number of moves away , picking the path which produces most favourable results
+																											.
+			</p>
+			<p style="font-size:25px ; text-align: justify">( The following pseudocode shows the inner workings of the algorithm . ) </p>
+
+
+			<img src="Images/pseudo_codigo.svg" width=100%>
+			<p style="font-size:25px ; text-align: justify">The function receives three arguments . The node that could represent a game state, the depth
+				 																							that is used to track the number of moves made so far to reach the current game state (alternatively,
+																											it could also represent the depth of the game tree, which we will see later along the way), and the
+																											boolean variable "maximizing", which tells us whose turn it is, if it is true, then it is the maximizer's
+																											turn. If it is the maximizer's turn, we keep the maximum possible score from the child layer of the
+																											current game state, otherwise we keep the minimum possible score with the goal of simulating optimal decisions
+																											from both players. We repeat this process until we reach a final state (the node is a leaf of the game tree).
+
+			</p>
+
+			<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Game Tree</p>
+			<p style="font-size:25px ; text-align: justify">
+				  The game tree, as it is commonly called in game theory,
+				 	is a directed graph whose nodes represent game states.
+					Game trees are of great importance in AI, as they allow us
+					to search through all possible paths a game can take ,
+					granting us the possibility to hand-pick the most advantageous scenarios .
+					There are different types of game trees, among them we can find the complete
+					game tree, which represents all possible ways of playing a game, and the
+				  partial game tree, which creates the game tree only up to a certain specified
+					depth . With a complete game tree, it is possible for the minimax algorithm to
+					find the path that increases the chances of winning. Even though minimax looks
+					like a neat algorithm, there is a colossal underlying issue attached to it.
+			</p>
+			<p style="font-size:25px ; text-align: justify">
+				( The following image shows a section of a tic-tac-toe game tree in which the maximizer has two options .
+				if it plays in the upper right corner, the game ends in a tie, if it plays in the lower right corner,
+				the outcome will be a victory for the maximizer, therefore the optimal move is the latter . )
+			</p>
+			<img src="Images/tree.svg" width=100%>
+
+
+			<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Time Complexity</p>
+			<p style="font-size:25px ; text-align: justify">
+				The complete game tree grants us the path to success by generating all possible games that can be played,
+				however this can be extremely costly as the game becomes more convoluted. This problem is caused by the
+				recursive nature of minimax, which produces an exponential time complexity, more precisely O(b^m), where "b"
+				is the average branching factor and "m" is the average game length .
+			</p>
+			<img src="Images/complexity_Table.svg" width=100%>
+			<p style="font-size:25px ; text-align: justify">
+				As we can see from the image above, the calculation of the complete game tree might be feasible for games
+				like tic-tic-toe (my implementation of minimax to solve tic-tac-toe can be found
+				<a href="https://github.com/JaplOfficial/JaplOfficial.github.io/blob/main/Code/TicTacToe.cpp" target="_blank">here</a> )
+				since it has about 255168 possible games, which can be calculated quite fast in modern computers,
+				however it becomes impossible in other games like chess, which have about 10^120 possible games.
+				A possible solution is to use a partial game tree instead of the complete game tree and compute a fixed
+				number of moves in advance instead of computing all possible game states . Another alternative is to use some
+				tree pruning algorithm such as alfa-beta pruning ( which I might write later in a separate blog post ) to cut
+				unecessary recursion , which saves a lot of extra computation .
+			</p>
+
+
+			<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">The Utility</p>
+			<p style="font-size:25px ; text-align: justify">
+				So far we have seen practically everything that is needed to implement a functional AI agent that is capable
+				of making smart decisions using the Minimax algorithm. The final necessary step is to figure out how we can tell
+				the algorithm which game states seem more favorable. If the current node in the game tree is a leaf, then we know
+				that this game has reached a final state, so we return the corresponding utility .
+				The question one might ask is
+				what these utility functions are and how can they be defined. The utility is the rating given to the leaf nodes in the
+				game tree, these are the ratings that define how good a particular game state really is. Let's see how this works
+			  with a fairly simple example, the tic-tac-toe has three possible game results, a win, a loss or a tie. Since we want
+				the AI to win, and the AI is looking for the maximum possible score, we need to associate the winning game states with
+				a positive score for the algorithm to prioritize them, while the losing game states need to be associated with a negative
+				score for the algorithm to avoid them, the tie game states can have a neutral value between the winning and the losing
+				value . The following image shows a tic-tac-toe game tree , where the winning , losing , tie game states have the ratings
+				of 1, -1, 0 respectively .
+			</p>
+			<img src="Images/heuristics_tree.svg" width=100%>
+
+			<p style="font-size:25px ; text-align: justify">
+				As we can see from the labels, the orange layer represents the maximizer and the blue layer the minimizer. It is also
+				important to note that the orange layer selects the maximum score from its children, while the blue layer selects the
+				minimum score in an attempt to simulate optimality from both sides . Since the root of the tree was assigned a one we
+				can prove that there is a sequence of moves that will grant the maximizer a certain victory .
+			</p>
+			<p style="font-size:25px ; text-align: justify">
+				We have seen how to define
+				the utility funtion for tic-tac-toe , but how would utility work in a more complex game like chess ? One might say that chess
+				also has three possible results , therefore implementing a similiar idea to the previous tic-tac-toe example would be a
+				good idea , but that would throw us down the rabbit hole since this would imply being able to compute the game tree down
+				to the leaf nodes , which would be hopeless given the mind-boggling number of leaf nodes in the complete chess game tree .
+				A much more reasonable approach is to assign values to each piece so that the algorithm prioritizes the most valuable pieces .
+				For example, if the king was threatened, the algorithm should do something immediately to avoid a possible loss, on the other
+				hand if a pawn was threatened, it should not be of much importance .
+			</p> <br> <br> <br> <br>
+
+
+			<p style="font-size:25px ; text-align: justify">
+				So there we go! This should be all we need to know to implement a functional AI
+				agent using Minimax, but now it's your turn, so I'll leave the reader with a challenge.
+				Try to implement a Minimax approach for the CodinGame <a href="https://www.codingame.com/multiplayer/bot-programming/tic-tac-toe" target="_blank">ultimate tic-tac-toe challenge</a>
+				and optimize it to get a good score . See you in the leaderboard .
+			</p><br><br>
+
+			<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">References</p>
+			<a href="https://www.youtube.com/watch?v=trKjYdBASyQ" target="_blank" style="font-size:25px">The Coding Train Tic-Tac-Toe Minimax video</a><br><br><br>
+			<a href="https://www.youtube.com/watch?v=l-hh51ncgDI" target="_blank" style="font-size:25px">Sebastian Lague Explanation of Minimax</a><br><br><br>
+			<a href="https://www.youtube.com/watch?v=STjW3eH0Cik" target="_blank" style="font-size:25px">Patrick Winston's lecture on Minimax and Alpha-Beta</a>
+		</div>
+	</body>
+</html>
