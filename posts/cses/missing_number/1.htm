@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> CSES | Counting Rooms Solution </title>
+
+		<meta charset= "UTF-8" />
+		<meta name= "description" content= "Detailed solution and explanation for the CSES Counting Rooms problem with algorithm visualization" />
+		<meta name= "keywords" content= "cses ,cses counting rooms solution,counting  rooms,cses solutions, cses problem set solutions, cses graph solutions" />
+		<meta name= "author" content= "japl" />
+		<meta name= "viewport" content= "width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" href="./images/logo/icon.png" />
+
+		<style>
+			html{
+				scroll-behavior: smooth;
+				overflow-x     : hidden;
+			}
+
+			body{
+				margin               : 0;
+				padding              : 0;
+				background-color     : #474F59;
+				color: #D9C0A3;
+			}
+
+			h1, h2, h3, h4, h5, h6{
+			  margin: 10% 0%;
+				font-family: Arial, Helvetica, sans-serif;
+				color      : #A65E4E;
+			}
+
+			p{
+				color: #D9C0A3;
+			}
+
+			a, a:link, a:visited, a:hover, a:active{
+				text-decoration: none;
+				color          : #BF8969;
+			}
+
+			body #navbar nav ul{
+				list-style-type : none;
+				margin          : 0;
+				padding         : 0;
+				overflow        : hidden;
+				background-color: #8B7B78;
+				box-shadow      : 0px 4px 69px black;
+			}
+
+			body #navbar nav ul li{
+				float: left;
+			}
+
+			body #navbar nav ul li a{
+				display        : block;
+				text-align     : center;
+				padding        : 16px;
+				text-decoration: none;
+				color          : #474F59;
+			}
+
+			body #navbar nav ul li a:hover{
+				color          : #D9C0A3;
+				text-decoration: underline;
+			}
+
+			body #navbar nav ul li a.active{
+				background-color: #474F59;
+				color           : #8B7B78;
+			}
+
+			body #navbar nav ul li a.active:hover{
+				color: #D9C0A3;
+			}
+
+			body #conteudo{
+				margin: 4% 30%;
+			}
+			#grid {
+				letter-spacing: 120px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id= "navbar">
+			<nav>
+				<ul>
+					<li><a class= "active" href="../../../index.htm">[ home ]</a></li>
+					<li><a class= "" href="../../../archives.htm">[ archives ]</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div id= "conteudo">
+			<h1>Missing Number Solution</h1>
+			<p style="color:grey ; font-size:20px ; font-family: Arial, Helvetica, sans-serif;">25 April 2021</p>
+			<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Statement</p>
+			<p style="font-size:25px ;  text-align: justify">
+				( The original statement can be found <a href="https://cses.fi/problemset/task/1083" target="_blank">here</a> )<br>
+				You are given all numbers between 1,2,…,n except one. Your task is to find the missing number.
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Input</b>
+				<br>
+				The first input line contains an integer n.
+
+				The second line contains n−1 numbers. Each number is distinct and between 1 and n (inclusive).
+
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E";>Output</b>
+				<br>
+
+				Print the missing number.
+
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Constraints</b>
+				<br>
+				2 ≤ n ≤ 2⋅10^5<br>
+				Time limit : 1.00s<br>
+				Memory limit : 512MB<br>
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Example</b>
+				<br><br>
+
+				Input : <br>
+				<a>5</a><br>
+				<a>
+				2 3 1 5<br><br>
+				</a>
+
+				Output : <br>
+				<a>4</a><br><br>
+				<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Solution</p>
+
+
+				<p style="font-size:25px ;  text-align: justify">
+					There are several solutions to this problem including sorting and searching to find the missing number.
+					Even though those solutions are valid I will use a neat number theory trick to solve this one. It's a known
+					 fact amongst mathematicians that the sum of all the natural numbers up to a certain N (where N is finite)
+					 can be calculated by the following expression:
+				</p>
+
+				<img src="images/natural_sum.svg" width=100% style="border-radius:15px">
+
+
+
+				<p style="font-size:25px ;  text-align: justify">
+					By knowing this property of the natural numbers a simple solution emerges. Since we know there is only one number
+					missing in the permutation [1, N] then we can subtract the sum of the input from the sum of all the natural numbers
+					up to N, by doing this every number will cancel out except one, the missing number.
+				</p>
+
+
+
+				<br>
+
+
+				<a style="color: #D9C0A3;">
+				<pre style='color:#D9C0A3;background:#323840ff; border-radius:15px;font-size:20px;'><span style='color:#A65E4E; '>#</span><span style='color:#A65E4E; '>include </span><span style='color:#ff9955ff; '>&lt;</span><span style='color:#D9C0A3; '>bits/stdc++.h</span><span style='color:#ff9955ff; '>></span>
+<span style='color:#ff9955ff; font-weight:bold; '>using</span> <span style='color:#ff9955ff; font-weight:bold; '>namespace</span> <span style='color:#D9C0A3; '>std</span><span style='color:#BF8969; '>;</span>
+
+<span style='color:#ff9955ff; font-weight:bold; '>int</span> <span style='color:#D9C0A3; '>main</span><span style='color:#BF8969; '>(</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+    <span style='color:#ff9955ff; font-weight:bold; '>long</span> <span style='color:#ff9955ff; font-weight:bold; '>long</span> <span style='color:#ff9955ff; font-weight:bold; '>int</span> n<span style='color:#808030; '>,</span> input<span style='color:#808030; '>,</span> sum <span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>0</span><span style='color:#800080; '>;</span>
+    <span style='color:#BF8969; '>cin</span> <span style='color:#BF8969; '>></span><span style='color:#BF8969; '>></span> n<span style='color:#BF8969; '>;</span>
+
+    <span style='color:#ff9955ff; font-weight:bold; '>for</span> <span style='color:#BF8969; '>(</span><span style='color:#ff9955ff; font-weight:bold; '>int</span> i <span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>0</span> <span style='color:#BF8969; '>;</span> i <span style='color:#808030; '>&lt;</span> n <span style='color:#BF8969; '>-</span> <span style='color:#D9C0A3; '>1</span> <span style='color:#BF8969; '>;</span> i<span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+        <span style='color:#BF8969; '>cin</span> <span style='color:#BF8969; '>></span><span style='color:#BF8969; '>></span> input<span style='color:#BF8969; '>;</span>
+        sum <span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>=</span> input<span style='color:#BF8969; '>;</span>
+    <span style='color:#BF8969; '>}</span>
+
+    <span style='color:#BF8969; '>cout</span> <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> <span style='color:#BF8969; '>(</span> n <span style='color:#BF8969; '>*</span> <span style='color:#BF8969; '>(</span>n <span style='color:#BF8969; '>+</span> <span style='color:#D9C0A3; '>1</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>/</span> <span style='color:#D9C0A3; '>2</span> <span style='color:#BF8969; '>-</span> sum <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> <span style='color:#BF8969; '>endl</span><span style='color:#BF8969; '>;</span>
+
+    <span style='color:#ff9955ff; font-weight:bold; '>return</span> <span style='color:#D9C0A3; '>0</span><span style='color:#BF8969; '>;</span>
+<span style='color:#BF8969; '>}</span>
+</pre>
+<!--Created using ToHtml.com on 2021-04-25 22:24:03 UTC -->
+				</p>
+				<br>
+				<p style="font-size:25px ;  text-align: justify">
+					This algorithm runs in time complexity of O(N) and space complexity of O(1) and it seems to me that it is indeed the most efficient
+					approach to the problem.
+				</p>
+				<br>
+		</div>
+	</body>
+</html>
