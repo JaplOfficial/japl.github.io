@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> CSES | Permutations Solution </title>
+
+		<meta charset= "UTF-8" />
+		<meta name= "description" content= "Detailed solution and explanation for the CSES Permutations problem" />
+		<meta name= "keywords" content= "cses ,cses permutations solution,permutations,cses solutions, cses problem set solutions, cses permutations" />
+		<meta name= "author" content= "japl" />
+		<meta name= "viewport" content= "width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" href="./images/logo/icon.png" />
+
+		<style>
+			html{
+				scroll-behavior: smooth;
+				overflow-x     : hidden;
+			}
+
+			body{
+				margin               : 0;
+				padding              : 0;
+				background-color     : #474F59;
+				color: #D9C0A3;
+			}
+
+			h1, h2, h3, h4, h5, h6{
+			  margin: 10% 0%;
+				font-family: Arial, Helvetica, sans-serif;
+				color      : #A65E4E;
+			}
+
+			p{
+				color: #D9C0A3;
+			}
+
+			a, a:link, a:visited, a:hover, a:active{
+				text-decoration: none;
+				color          : #BF8969;
+			}
+
+			body #navbar nav ul{
+				list-style-type : none;
+				margin          : 0;
+				padding         : 0;
+				overflow        : hidden;
+				background-color: #8B7B78;
+				box-shadow      : 0px 4px 69px black;
+			}
+
+			body #navbar nav ul li{
+				float: left;
+			}
+
+			body #navbar nav ul li a{
+				display        : block;
+				text-align     : center;
+				padding        : 16px;
+				text-decoration: none;
+				color          : #474F59;
+			}
+
+			body #navbar nav ul li a:hover{
+				color          : #D9C0A3;
+				text-decoration: underline;
+			}
+
+			body #navbar nav ul li a.active{
+				background-color: #474F59;
+				color           : #8B7B78;
+			}
+
+			body #navbar nav ul li a.active:hover{
+				color: #D9C0A3;
+			}
+
+			body #conteudo{
+				margin: 4% 30%;
+			}
+			#grid {
+				letter-spacing: 120px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id= "navbar">
+			<nav>
+				<ul>
+					<li><a class= "active" href="../../../index.htm">[ home ]</a></li>
+					<li><a class= "" href="../../../archives.htm">[ archives ]</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div id= "conteudo">
+			<h1>Permutations Solution</h1>
+			<p style="color:grey ; font-size:20px ; font-family: Arial, Helvetica, sans-serif;">2 May 2021</p>
+			<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Statement</p>
+			<p style="font-size:25px ;  text-align: justify">
+				( The original statement can be found <a href="https://cses.fi/problemset/task/1070/" target="_blank">here</a> )<br>
+				A permutation of integers 1,2,…,n is called beautiful if there are no adjacent elements whose difference is 1.
+
+				Given n, construct a beautiful permutation if such a permutation exists.
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Input</b>
+				<br>
+				The only input line contains an integer n.
+
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E";>Output</b>
+				<br>
+
+				Print a beautiful permutation of integers 1,2,…,n. If there are several solutions,
+				you may print any of them. If there are no solutions, print "NO SOLUTION".
+
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Constraints</b>
+				<br>
+				1 ≤ n ≤ 10^6<br>
+				Time limit : 1.00s<br>
+				Memory limit : 512MB<br>
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Example 1</b>
+				<br><br>
+
+				Input : <br>
+				<a>5</a><br>
+
+				Output : <br>
+				<a>4 2 5 3 1</a><br><br><br>
+
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Example 2</b>
+				<br><br>
+
+				Input : <br>
+				<a>3</a><br>
+
+				Output : <br>
+				<a>NO SOLUTION</a><br><br>
+
+
+				<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Solution</p>
+
+
+				<p style="font-size:25px ;  text-align: justify">
+					We are asked to find a permutation of length N such that no adjacent elements have an absolute difference of 1.
+					This type of problem is classical and can be solved using constructive algorithms. Such algorithms rely on finding
+					some type of construction that holds some property for some specific input.<br>
+ One possible way to solve this is to separate the even numbers from the odd numbers. Since the absolute difference between any adjacent even numbers is always two (the same goes for odd numbers) then the initial property holds right? At first, this seems to be the case but we need to be careful with corner cases such as N=4 where [ 1 3 2 4 ] is an invalid permutation but [ 2 4 1 3 ] is a valid one. It is easy to see that for N=2 and N=3 there are no possible solutions and our intuition tells us that the approach described above works for any N>3 if we are careful enough to put the even numbers first.
+
+				</p>
+
+				<img src="images/constructive_n.svg" width=100% style="border-radius:15px">
+				<br><br>
+
+					<pre style='color:#D9C0A3;background:#323840ff; border-radius:15px;font-size:20px;'><span style='color:#A65E4E; '>#</span><span style='color:#A65E4E; '>include </span><span style='color:#ff9955ff; '>&lt;</span><span style='color:#D9C0A3; '>bits/stdc++.h</span><span style='color:#ff9955ff; '>></span>
+<span style='color:#ff9955ff; font-weight:bold; '>using</span> <span style='color:#ff9955ff; font-weight:bold; '>namespace</span> <span style='color:#D9C0A3; '>std</span><span style='color:#BF8969; '>;</span>
+
+<span style='color:#ff9955ff; font-weight:bold; '>int</span> <span style='color:#D9C0A3; '>main</span><span style='color:#BF8969; '>(</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+    <span style='color:#ff9955ff; font-weight:bold; '>int</span> n<span style='color:#BF8969; '>;</span>
+    <span style='color:#BF8969; '>cin</span> <span style='color:#BF8969; '>></span><span style='color:#BF8969; '>></span> n<span style='color:#BF8969; '>;</span>
+
+    <span style='color:#ff9955ff; font-weight:bold; '>int</span> value <span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>2</span><span style='color:#BF8969; '>;</span>
+
+    <span style='color:#ff9955ff; font-weight:bold; '>if</span> <span style='color:#BF8969; '>(</span>n <span style='color:#BF8969; '>=</span><span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>2</span> <span style='color:#BF8969; '>|</span><span style='color:#BF8969; '>|</span> n <span style='color:#BF8969; '>=</span><span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>3</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+      <span style='color:#BF8969; '>cout</span> <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> <span style='color:#ff9955ff; '>"</span><span style='color:#D9C0A3; '>NO SOLUTION</span><span style='color:#ff9955ff; '>"</span><span style='color:#BF8969; '>;</span>
+      <span style='color:#ff9955ff; font-weight:bold; '>return</span> <span style='color:#D9C0A3; '>0</span><span style='color:#BF8969; '>;</span>
+    <span style='color:#BF8969; '>}</span>
+
+    <span style='color:#ff9955ff; font-weight:bold; '>while</span><span style='color:#BF8969; '>(</span>value <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>=</span> n<span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+      <span style='color:#BF8969; '>cout</span> <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> value <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> <span style='color:#ff9955ff; '>"</span><span style='color:#0000e6; '> </span><span style='color:#ff9955ff; '>"</span><span style='color:#BF8969; '>;</span>
+      value <span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>2</span><span style='color:#BF8969; '>;</span>
+    <span style='color:#BF8969; '>}</span>
+
+    value <span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>1</span><span style='color:#BF8969; '>;</span>
+
+    <span style='color:#ff9955ff; font-weight:bold; '>while</span><span style='color:#BF8969; '>(</span>value <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>=</span> n<span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+      <span style='color:#BF8969; '>cout</span> <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> value <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> <span style='color:#ff9955ff; '>"</span><span style='color:#0000e6; '> </span><span style='color:#ff9955ff; '>"</span><span style='color:#BF8969; '>;</span>
+      value <span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>2</span><span style='color:#BF8969; '>;</span>
+    <span style='color:#BF8969; '>}</span>
+
+    <span style='color:#ff9955ff; font-weight:bold; '>return</span> <span style='color:#D9C0A3; '>0</span><span style='color:#BF8969; '>;</span>
+<span style='color:#BF8969; '>}</span>
+</pre>
+<!--Created using ToHtml.com on 2021-05-02 20:43:52 UTC -->
+
+
+
+
+
+
+
+
+				<p style="font-size:25px ;  text-align: justify">
+					 This algorithm is really efficient since it runs in a time complexity of O(N) and space complexity of O(1).
+				</p>
+				<br>
+		</div>
+	</body>
+</html>
