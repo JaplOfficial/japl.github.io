@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> CSES | Two Knights Solution </title>
+
+		<meta charset= "UTF-8" />
+		<meta name= "description" content= "Detailed solution and explanation for the CSES Two Knights problem" />
+		<meta name= "keywords" content= "cses ,cses two knights solution,two knights,cses solutions, cses problem set solutions" />
+		<meta name= "author" content= "japl" />
+		<meta name= "viewport" content= "width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" href="./images/logo/icon.png" />
+
+		<style>
+			html{
+				scroll-behavior: smooth;
+				overflow-x     : hidden;
+			}
+
+			body{
+				margin               : 0;
+				padding              : 0;
+				background-color     : #474F59;
+				color: #D9C0A3;
+			}
+
+			h1, h2, h3, h4, h5, h6{
+			  margin: 10% 0%;
+				font-family: Arial, Helvetica, sans-serif;
+				color      : #A65E4E;
+			}
+
+			p{
+				color: #D9C0A3;
+			}
+
+			a, a:link, a:visited, a:hover, a:active{
+				text-decoration: none;
+				color          : #BF8969;
+			}
+
+			body #navbar nav ul{
+				list-style-type : none;
+				margin          : 0;
+				padding         : 0;
+				overflow        : hidden;
+				background-color: #8B7B78;
+				box-shadow      : 0px 4px 69px black;
+			}
+
+			body #navbar nav ul li{
+				float: left;
+			}
+
+			body #navbar nav ul li a{
+				display        : block;
+				text-align     : center;
+				padding        : 16px;
+				text-decoration: none;
+				color          : #474F59;
+			}
+
+			body #navbar nav ul li a:hover{
+				color          : #D9C0A3;
+				text-decoration: underline;
+			}
+
+			body #navbar nav ul li a.active{
+				background-color: #474F59;
+				color           : #8B7B78;
+			}
+
+			body #navbar nav ul li a.active:hover{
+				color: #D9C0A3;
+			}
+
+			body #conteudo{
+				margin: 4% 30%;
+			}
+			#grid {
+				letter-spacing: 120px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id= "navbar">
+			<nav>
+				<ul>
+					<li><a class= "active" href="../../../index.htm">[ home ]</a></li>
+					<li><a class= "" href="../../../archives.htm">[ archives ]</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div id= "conteudo">
+			<h1>Two Knights Solution</h1>
+			<p style="color:grey ; font-size:20px ; font-family: Arial, Helvetica, sans-serif;">16 June 2021</p>
+			<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Statement</p>
+			<p style="font-size:25px ;  text-align: justify">
+				( The original statement can be found <a href="https://cses.fi/problemset/task/1072" target="_blank">here</a> )<br>
+				Your task is to count for k=1,2,…,n the number of ways two knights can be placed on a k×k chessboard so that they do not attack each other.
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Input</b>
+				<br>
+				The only input line contains an integer n.
+
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E";>Output</b>
+				<br>
+
+				Print n integers: the results.
+
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Constraints</b>
+				<br>
+				1 ≤ n ≤ 10000<br>
+				Time limit : 1.00s<br>
+				Memory limit : 512MB<br>
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Example</b>
+				<br><br>
+
+				Input : <br>
+				<a>8</a><br><br>
+
+
+				Output : <br>
+			 <a>0<br>
+					6<br>
+					28<br>
+					96<br>
+					252<br>
+					550<br>
+					1056<br>
+					1848
+				</a><br><br>
+				<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Solution</p>
+
+
+				<p style="font-size:25px ;  text-align: justify">
+					This problem can be solved using mathematics and it might look quite daunting at first sight.
+					One way of approaching this problem requires us to find the total number of ways to place two knights
+					on the board and subtract the number of distinct ways to place two knights so that they attack each other.
+				</p>
+
+
+
+				<p style="font-size:25px ;  text-align: justify">
+					Firstly we need to figure out how many ways there are to place two knights on the board.
+					Since the first knight can be placed anywhere on the board (k^2 positions) and the second
+					knight anywhere else (k^2 - 1 positions) then we can formulate the following expression.
+				</p><br>
+
+				<div width=100%>
+					<img src="images/total.svg" width=60% style="border-radius:15px; margin: 0% 0% 0% 20%">
+				</div>
+
+				<br>
+
+				<p style="font-size:25px ;  text-align: justify">
+					We divide by two since the knights are indistinguishable and we want to
+					remove duplicate cases where the knights positions are swapped.
+				</p>
+
+
+				<p style="font-size:25px ;  text-align: justify">
+					Now, all we have to find out is how many of these positions put both knights under attack.
+					As we can see in the following image there are eight different attacking configurations that
+					 can be made by a knight.
+				</p>
+
+
+				<div width=100%>
+					<img src="images/positions.svg" width=70% style="margin: 0% 0% 0% 15%">
+				</div>
+
+
+				<p style="font-size:25px ;  text-align: justify">
+					Since the board is a square we can deduce there are the same number of attacking positions
+					for each of the eight configurations. So the last question that remains is how many ways
+					are there to place each of the configurations in a k×k board and given that one attack
+				  occupies a block of dimensions 2×3 (and vice-versa) then we have (k-1)×(k-2) ways of
+					placing the 2×3 block on the board. To get the total number of distinct attacking
+					positions we multiply this value by eight and divide it by 2 to remove the duplicates.
+				</p>
+
+				<p style="font-size:25px ;  text-align: justify">
+					The last step is to subtract the total amount of attacking positions from the total number
+					of ways to place 2 knights on the board and we will get our answer. The following expression represents the answer:
+				</p>
+
+
+				<div width=100%>
+					<img src="images/function.svg" width=100% style="border-radius:15px">
+				</div>
+
+
+
+				<pre style='color:#D9C0A3;background:#323840ff; border-radius:15px;font-size:0.9vw;'><span style='color:#A65E4E; '>#</span><span style='color:#A65E4E; '>include </span><span style='color:#ff9955ff; '>&lt;</span><span style='color:#D9C0A3; '>bits/stdc++.h</span><span style='color:#ff9955ff; '>></span>
+<span style='color:#A65E4E; '>#</span><span style='color:#A65E4E; '>include </span><span style='color:#ff9955ff; '>&lt;</span><span style='color:#D9C0A3; '>bits/stdc++.h</span><span style='color:#ff9955ff; '>></span>
+<span style='color:#ff9955ff; font-weight:bold; '>using</span> <span style='color:#ff9955ff; font-weight:bold; '>namespace</span> <span style='color:#D9C0A3; '>std</span><span style='color:#BF8969; '>;</span>
+
+<span style='color:#ff9955ff; font-weight:bold; '>int</span> <span style='color:#D9C0A3; '>main</span><span style='color:#BF8969; '>(</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+    <span style='color:#ff9955ff; font-weight:bold; '>long</span> <span style='color:#ff9955ff; font-weight:bold; '>long</span> n<span style='color:#BF8969; '>;</span>
+    <span style='color:#BF8969; '>cin</span> <span style='color:#BF8969; '>></span><span style='color:#BF8969; '>></span> n<span style='color:#BF8969; '>;</span>
+
+    <span style='color:#BF8969; '>cout</span> <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> <span style='color:#D9C0A3; '>0</span> <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> <span style='color:#BF8969; '>endl</span><span style='color:#BF8969; '>;</span>
+    <span style='color:#ff9955ff; font-weight:bold; '>for</span> <span style='color:#BF8969; '>(</span><span style='color:#ff9955ff; font-weight:bold; '>long</span> <span style='color:#ff9955ff; font-weight:bold; '>long</span> i <span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>2</span> <span style='color:#BF8969; '>;</span> i <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>=</span> n <span style='color:#BF8969; '>;</span> i<span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+      <span style='color:#BF8969; '>cout</span> <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> <span style='color:#BF8969; '>(</span>i <span style='color:#BF8969; '>*</span> i<span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>*</span> <span style='color:#BF8969; '>(</span>i <span style='color:#BF8969; '>*</span> i <span style='color:#BF8969; '>-</span> <span style='color:#D9C0A3; '>1</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>/</span> <span style='color:#D9C0A3; '>2</span> <span style='color:#BF8969; '>-</span> <span style='color:#BF8969; '>(</span><span style='color:#D9C0A3; '>4</span> <span style='color:#BF8969; '>*</span> <span style='color:#BF8969; '>(</span>i <span style='color:#BF8969; '>-</span> <span style='color:#D9C0A3; '>2</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>*</span> <span style='color:#BF8969; '>(</span>i <span style='color:#BF8969; '>-</span> <span style='color:#D9C0A3; '>1</span><span style='color:#BF8969; '>)</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> <span style='color:#BF8969; '>endl</span><span style='color:#BF8969; '>;</span>
+    <span style='color:#BF8969; '>}</span>
+
+    <span style='color:#ff9955ff; font-weight:bold; '>return</span> <span style='color:#D9C0A3; '>0</span><span style='color:#BF8969; '>;</span>
+<span style='color:#BF8969; '>}</span>
+</pre>
+<!--Created using ToHtml.com on 2021-06-15 19:27:23 UTC -->
+
+				</p>
+				<br>
+				<p style="font-size:25px ;  text-align: justify">
+					This algorithm runs in time complexity of O(N) and space complexity of O(1) and it seems to me that it is a pretty efficient
+					approach to the problem.
+				</p>
+				<br>
+		</div>
+	</body>
+</html>
