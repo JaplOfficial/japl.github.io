@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="185mm"
+   height="75mm"
+   viewBox="0 0 185 75"
+   version="1.1"
+   id="svg7523"
+   inkscape:version="1.0.2-2 (e86c870879, 2021-01-15)"
+   sodipodi:docname="subtree_size.svg">
+  <defs
+     id="defs7517" />
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="1.979899"
+     inkscape:cx="327.26435"
+     inkscape:cy="163.04322"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     inkscape:document-rotation="0"
+     showgrid="false"
+     inkscape:window-width="2315"
+     inkscape:window-height="1321"
+     inkscape:window-x="2476"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1" />
+  <metadata
+     id="metadata7520">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Camada 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#323840;fill-opacity:1;stroke:#63a6ff;stroke-width:0.13701"
+       id="rect10"
+       width="189.28114"
+       height="83.651817"
+       x="-0.0075153392"
+       y="-4.2468095" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.93043px;line-height:1.25;font-family:sans-serif;fill:#d9c0a3;fill-opacity:1;stroke:none;stroke-width:0.173261"
+       x="12.064648"
+       y="38.613045"
+       id="text8108"><tspan
+         sodipodi:role="line"
+         id="tspan8106"
+         x="12.064648"
+         y="38.613045"
+         style="fill:#d9c0a3;fill-opacity:1;stroke-width:0.173261">subtree[node] =</tspan></text>
+    <path
+       style="fill:none;stroke:#d9c0a3;stroke-width:0.665;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 75.237083,12.880708 -4.593098,0.01962 -0.995243,0.415391 -0.441659,0.905081 -0.250834,19.941247 c 0.0058,0.223898 -0.149373,0.366092 -0.360841,0.640326 -0.188587,0.24261 -0.377174,0.368506 -0.565761,0.528664 -0.218387,0.190823 -0.541385,0.299681 -0.989842,0.493048 -0.263547,0.152183 -0.780059,0.257118 -1.157157,0.409301 l 3.073601,2.605877 -0.119032,19.937082 0.363368,1.619916 1.111871,0.842183 4.991443,0.05146"
+       id="path8110"
+       sodipodi:nodetypes="cccccccccccccc" />
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:6.93043px;line-height:1.25;font-family:sans-serif;fill:#d9c0a3;fill-opacity:1;stroke:none;stroke-width:0.173261"
+       x="79.869186"
+       y="25.218929"
+       id="text8108-8"><tspan
+         sodipodi:role="line"
+         id="tspan8106-6"
+         x="79.869186"
+         y="25.218929"
+         style="fill:#d9c0a3;fill-opacity:1;stroke-width:0.173261">0 ,if node is leaf</tspan></text>
+    <g
+       aria-label="Σ"
+       style="font-style:normal;font-weight:normal;line-height:0%;font-family:'Times New Roman';text-align:start;text-anchor:start;fill:#d9c0a3;fill-opacity:1;stroke:none;stroke-width:1px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       id="text5540"
+       transform="matrix(0.0579941,0,0,0.05871111,60.753876,4.981434)">
+      <path
+         d="m 340.80927,575.52393 h 198.63281 l 5.27344,66.60156 h -7.42188 q -1.36719,-19.72656 -6.64062,-30.07813 -5.27344,-10.54687 -14.45313,-15.23437 -9.17969,-4.6875 -29.10156,-4.6875 h -90.42969 l 80.66406,103.51562 -91.79687,108.39844 h 100.58594 q 27.34375,0 41.79687,-8.78906 14.45313,-8.78906 21.67969,-36.71875 l 7.42187,1.75781 -11.32812,80.07813 H 340.80927 v -7.03125 L 442.76239,713.02393 340.80927,582.55518 Z"
+         style="font-size:400px;line-height:1.25;text-align:center;text-anchor:middle;fill:#d9c0a3;fill-opacity:1"
+         id="path814" />
+    </g>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:3.83979px;line-height:1.25;font-family:sans-serif;fill:#d9c0a3;fill-opacity:1;stroke:none;stroke-width:0.0959948"
+       x="79.87719"
+       y="58.63974"
+       id="text8108-8-9"><tspan
+         sodipodi:role="line"
+         x="79.87719"
+         y="58.63974"
+         style="fill:#d9c0a3;fill-opacity:1;stroke-width:0.0959948"
+         id="tspan8789">c∈child</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-style:normal;font-weight:normal;font-size:5.83764px;line-height:1.25;font-family:sans-serif;fill:#d9c0a3;fill-opacity:1;stroke:none;stroke-width:0.145941"
+       x="96.32016"
+       y="50.559586"
+       id="text8108-84"><tspan
+         sodipodi:role="line"
+         id="tspan8106-4"
+         x="96.32016"
+         y="50.559586"
+         style="fill:#d9c0a3;fill-opacity:1;stroke-width:0.145941">subtree[c] + 1 ,otherwise</tspan></text>
+  </g>
+</svg>

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> CSES | Subordinates Solution </title>
+
+		<meta charset= "UTF-8" />
+		<meta name= "description" content= "Detailed solution and explanation for the CSES Subordinates problem" />
+		<meta name= "keywords" content= "cses ,cses subordinates solution,subordinates,cses solutions, cses problem set solutions, algorithm visualization" />
+		<meta name= "author" content= "japl" />
+		<meta name= "viewport" content= "width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" href="./images/logo/icon.png" />
+
+		<style>
+			html{
+				scroll-behavior: smooth;
+				overflow-x     : hidden;
+			}
+
+			body{
+				margin               : 0;
+				padding              : 0;
+				background-color     : #474F59;
+				color: #D9C0A3;
+			}
+
+			h1, h2, h3, h4, h5, h6{
+			  margin: 10% 0%;
+				font-family: Arial, Helvetica, sans-serif;
+				color      : #A65E4E;
+			}
+
+			p{
+				color: #D9C0A3;
+			}
+
+			a, a:link, a:visited, a:hover, a:active{
+				text-decoration: none;
+				color          : #BF8969;
+			}
+
+			body #navbar nav ul{
+				list-style-type : none;
+				margin          : 0;
+				padding         : 0;
+				overflow        : hidden;
+				background-color: #8B7B78;
+				box-shadow      : 0px 4px 69px black;
+			}
+
+			body #navbar nav ul li{
+				float: left;
+			}
+
+			body #navbar nav ul li a{
+				display        : block;
+				text-align     : center;
+				padding        : 16px;
+				text-decoration: none;
+				color          : #474F59;
+			}
+
+			body #navbar nav ul li a:hover{
+				color          : #D9C0A3;
+				text-decoration: underline;
+			}
+
+			body #navbar nav ul li a.active{
+				background-color: #474F59;
+				color           : #8B7B78;
+			}
+
+			body #navbar nav ul li a.active:hover{
+				color: #D9C0A3;
+			}
+
+			body #conteudo{
+				margin: 4% 30%;
+			}
+			#grid {
+				letter-spacing: 120px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id= "navbar">
+			<nav>
+				<ul>
+					<li><a class= "active" href="../../../index.htm">[ home ]</a></li>
+					<li><a class= "" href="../../../archives.htm">[ archives ]</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div id= "conteudo">
+			<h1>Subordinates Solution</h1>
+			<p style="color:grey ; font-size:20px ; font-family: Arial, Helvetica, sans-serif;">27 June 2021</p>
+			<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Statement</p>
+			<p style="font-size:25px ;  text-align: justify">
+				( The original statement can be found <a href="https://cses.fi/problemset/task/1674" target="_blank">here</a> )<br>
+				Given the structure of a company, your task is to calculate for each employee the number of their subordinates.
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Input</b>
+				<br>
+				The first input line has an integer n: the number of employees. The employees are numbered 1,2,…,n, and employee 1 is the general director of the company.
+				After this, there are n−1 integers: for each employee 2,3,…,n their direct boss in the company.
+
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E";>Output</b>
+				<br>
+
+				Print n integers: for each employee 1,2,…,n the number of their subordinates.
+
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Constraints</b>
+				<br>
+				1 ≤ n ≤ 2⋅10^5<br>
+				Time limit : 1.00s<br>
+				Memory limit : 512MB<br>
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Example</b>
+				<br><br>
+
+				Input : <br>
+				<a>5</a><br>
+				<a>1 1 2 3</a>
+				<br><br>
+
+
+				Output : <br>
+			   <a>4 1 1 0 0
+				</a><br><br>
+				<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Solution</p>
+
+
+				<p style="font-size:25px ;  text-align: justify">
+					The statement provides a hint when it says that the input is composed of N-1 integers
+					that represent the boss of each employee. This means the company can be represented
+					as a tree with N nodes and N-1 edges.
+				</p>
+
+				<img src="images/input.svg" width=60% style="border-radius:15px; margin: 0% 0% 0% 20%">
+
+				<p style="font-size:25px ;  text-align: justify">
+					The problem asks us to calculate the number of subordinates for each employee which can be
+					translated to "compute the size of each node's subtree".<br> This can be achieved using a
+					recursive algorithm that traverses into the leaf nodes of the tree and sets their subtree
+					size to zero and as the algorithm goes back up the tree it increments the value of the parent's
+					subtree size in such a way that the values build from the bottom level up to the root node like
+					the following animation.
+				</p><br>
+
+				<div width=100%>
+					<img src="images/visualization.gif" width=60% style="border-radius:15px; margin: 0% 0% 0% 20%">
+				</div>
+
+				<br>
+
+				<p style="font-size:25px ;  text-align: justify">
+					The following expression sums up the process by saying that the subtree size of
+					some node can be calculated by summing all its child's subtree sizes.
+				</p>
+
+				<div width=100%>
+					<img src="images/subtree_size.svg" width=100% style="border-radius:20px; margin: 0% 0% 0% 0%">
+				</div>
+
+
+
+				<pre style='color:#D9C0A3;background:#323840ff; border-radius:15px;font-size:0.9vw;'><span style='color:#A65E4E; '>#</span><span style='color:#A65E4E; '>include </span><span style='color:#ff9955ff; '>&lt;</span><span style='color:#D9C0A3; '>bits/stdc++.h</span><span style='color:#ff9955ff; '>></span>
+<span style='color:#ff9955ff; font-weight:bold; '>using</span> <span style='color:#ff9955ff; font-weight:bold; '>namespace</span> <span style='color:#D9C0A3; '>std</span><span style='color:#BF8969; '>;</span>
+<span style='color:#A65E4E; '>#</span><span style='color:#A65E4E; '>define</span><span style='color:#A65E4E; '> MAXN 202020</span>
+
+<span style='color:#BF8969; '>vector</span><span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>vector</span><span style='color:#BF8969; '>&lt;</span><span style='color:#ff9955ff; font-weight:bold; '>int</span><span style='color:#BF8969; '>></span><span style='color:#BF8969; '>></span> adj<span style='color:#BF8969; '>(</span>MAXN<span style='color:#BF8969; '>)</span><span style='color:#BF8969; '>;</span>
+<span style='color:#BF8969; '>vector</span><span style='color:#BF8969; '>&lt;</span><span style='color:#ff9955ff; font-weight:bold; '>int</span><span style='color:#BF8969; '>></span>subtree_size<span style='color:#BF8969; '>(</span>MAXN<span style='color:#BF8969; '>)</span><span style='color:#BF8969; '>;</span>
+
+<span style='color:#ff9955ff; font-weight:bold; '>int</span> calc <span style='color:#BF8969; '>(</span><span style='color:#ff9955ff; font-weight:bold; '>int</span> node<span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+   <span style='color:#ff9955ff; font-weight:bold; '>if</span> <span style='color:#BF8969; '>(</span>adj<span style='color:#BF8969; '>[</span>node<span style='color:#BF8969; '>]</span><span style='color:#BF8969; '>.</span>size<span style='color:#BF8969; '>(</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>=</span><span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>0</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+      <span style='color:#ff9955ff; font-weight:bold; '>return</span> <span style='color:#D9C0A3; '>1</span><span style='color:#BF8969; '>;</span>
+   <span style='color:#BF8969; '>}</span> <span style='color:#ff9955ff; font-weight:bold; '>else</span> <span style='color:#BF8969; '>{</span>
+       <span style='color:#ff9955ff; font-weight:bold; '>for</span> <span style='color:#BF8969; '>(</span><span style='color:#ff9955ff; font-weight:bold; '>int</span> i <span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>0</span><span style='color:#BF8969; '>;</span> i <span style='color:#BF8969; '>&lt;</span> adj<span style='color:#BF8969; '>[</span>node<span style='color:#BF8969; '>]</span><span style='color:#BF8969; '>.</span>size<span style='color:#BF8969; '>(</span><span style='color:#BF8969; '>)</span><span style='color:#BF8969; '>;</span> i<span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+          subtree_size<span style='color:#BF8969; '>[</span>node<span style='color:#BF8969; '>]</span> <span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>=</span> calc<span style='color:#BF8969; '>(</span>adj<span style='color:#BF8969; '>[</span>node<span style='color:#BF8969; '>]</span><span style='color:#BF8969; '>[</span>i<span style='color:#BF8969; '>]</span><span style='color:#BF8969; '>)</span><span style='color:#BF8969; '>;</span>
+       <span style='color:#BF8969; '>}</span>
+   <span style='color:#BF8969; '>}</span>
+   <span style='color:#ff9955ff; font-weight:bold; '>return</span> subtree_size<span style='color:#BF8969; '>[</span>node<span style='color:#BF8969; '>]</span> <span style='color:#BF8969; '>+</span> <span style='color:#D9C0A3; '>1</span><span style='color:#BF8969; '>;</span>
+<span style='color:#BF8969; '>}</span>
+
+<span style='color:#ff9955ff; font-weight:bold; '>int</span> <span style='color:#D9C0A3; '>main</span><span style='color:#BF8969; '>(</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+  <span style='color:#ff9955ff; font-weight:bold; '>int</span> n<span style='color:#BF8969; '>;</span>
+  <span style='color:#BF8969; '>cin</span> <span style='color:#BF8969; '>></span><span style='color:#BF8969; '>></span> n<span style='color:#BF8969; '>;</span>
+  <span style='color:#ff9955ff; font-weight:bold; '>for</span> <span style='color:#BF8969; '>(</span><span style='color:#ff9955ff; font-weight:bold; '>int</span> i <span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>2</span><span style='color:#BF8969; '>;</span> i <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>=</span> n<span style='color:#BF8969; '>;</span> i<span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+      <span style='color:#ff9955ff; font-weight:bold; '>int</span> boss<span style='color:#BF8969; '>;</span>
+      <span style='color:#BF8969; '>cin</span> <span style='color:#BF8969; '>></span><span style='color:#BF8969; '>></span> boss<span style='color:#BF8969; '>;</span>
+      adj<span style='color:#BF8969; '>[</span>boss<span style='color:#BF8969; '>]</span><span style='color:#BF8969; '>.</span>push_back<span style='color:#BF8969; '>(</span>i<span style='color:#BF8969; '>)</span><span style='color:#BF8969; '>;</span>
+  <span style='color:#BF8969; '>}</span>
+  calc<span style='color:#BF8969; '>(</span><span style='color:#D9C0A3; '>1</span><span style='color:#BF8969; '>)</span><span style='color:#BF8969; '>;</span>
+  <span style='color:#ff9955ff; font-weight:bold; '>for</span> <span style='color:#BF8969; '>(</span><span style='color:#ff9955ff; font-weight:bold; '>int</span> i <span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>1</span><span style='color:#BF8969; '>;</span> i <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>=</span> n<span style='color:#BF8969; '>;</span> i<span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+      <span style='color:#BF8969; '>cout</span> <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> subtree_size<span style='color:#BF8969; '>[</span>i<span style='color:#BF8969; '>]</span> <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> <span style='color:#ff9955ff; '>"</span><span style='color:#0000e6; '> </span><span style='color:#ff9955ff; '>"</span><span style='color:#BF8969; '>;</span>
+  <span style='color:#BF8969; '>}</span>
+  <span style='color:#ff9955ff; font-weight:bold; '>return</span> <span style='color:#D9C0A3; '>0</span><span style='color:#BF8969; '>;</span>
+<span style='color:#BF8969; '>}</span>
+</pre>
+<!--Created using ToHtml.com on 2021-06-22 21:13:55 UTC -->
+
+				</p>
+				<br>
+				<p style="font-size:25px ;  text-align: justify">
+					Even though this algorithm uses recursion it still runs in time and space complexity of O(N).
+				</p>
+				<br>
+		</div>
+	</body>
+</html>
