@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title> CSES | Trailing Zeros Solution </title>
+
+		<meta charset= "UTF-8" />
+		<meta name= "description" content= "Detailed solution and explanation for the CSES Trailing Zeros problem" />
+		<meta name= "keywords" content= "cses ,cses trailing zeros solution,trailing zeros,cses solutions, cses problem set solutions" />
+		<meta name= "author" content= "japl" />
+		<meta name= "viewport" content= "width=device-width, initial-scale=1.0" />
+
+		<link rel="icon" href="./images/logo/icon.png" />
+		<script>
+  			window.dataLayer = window.dataLayer || [];
+  			function gtag(){dataLayer.push(arguments);}
+  			gtag('js', new Date());
+
+  			gtag('config', 'G-WE3QS3T7XX');
+		</script>
+
+
+		<style>
+			html{
+				scroll-behavior: smooth;
+				overflow-x     : hidden;
+			}
+
+			body{
+				margin               : 0;
+				padding              : 0;
+				background-color     : #474F59;
+				color: #D9C0A3;
+			}
+
+			h1, h2, h3, h4, h5, h6{
+			  margin: 10% 0%;
+				font-family: Arial, Helvetica, sans-serif;
+				color      : #A65E4E;
+			}
+
+			p{
+				color: #D9C0A3;
+			}
+
+			a, a:link, a:visited, a:hover, a:active{
+				text-decoration: none;
+				color          : #BF8969;
+			}
+
+			body #navbar nav ul{
+				list-style-type : none;
+				margin          : 0;
+				padding         : 0;
+				overflow        : hidden;
+				background-color: #8B7B78;
+				box-shadow      : 0px 4px 69px black;
+			}
+
+			body #navbar nav ul li{
+				float: left;
+			}
+
+			body #navbar nav ul li a{
+				display        : block;
+				text-align     : center;
+				padding        : 16px;
+				text-decoration: none;
+				color          : #474F59;
+			}
+
+			body #navbar nav ul li a:hover{
+				color          : #D9C0A3;
+				text-decoration: underline;
+			}
+
+			body #navbar nav ul li a.active{
+				background-color: #474F59;
+				color           : #8B7B78;
+			}
+
+			body #navbar nav ul li a.active:hover{
+				color: #D9C0A3;
+			}
+
+			body #conteudo{
+				margin: 4% 30%;
+			}
+			#grid {
+				letter-spacing: 120px;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id= "navbar">
+			<nav>
+				<ul>
+					<li><a class= "active" href="../../../index.htm">[ home ]</a></li>
+					<li><a class= "" href="../../../archives.htm">[ archives ]</a></li>
+				</ul>
+			</nav>
+		</div>
+
+		<div id= "conteudo">
+			<h1>Trailing Zeros</h1>
+			<p style="color:grey ; font-size:20px ; font-family: Arial, Helvetica, sans-serif;">12 July 2021</p>
+			<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Statement</p>
+			<p style="font-size:25px ;  text-align: justify">
+				( The original statement can be found <a href="https://cses.fi/problemset/task/1618/" target="_blank">here</a> )<br>
+				Your task is to calculate the number of trailing zeros in the factorial n!.
+
+				For example, 20!=2432902008176640000 and it has 4 trailing zeros.
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Input</b>
+				<br>
+				The only input line has an integer n.
+
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E";>Output</b>
+				<br>
+
+				Print the number of trailing zeros in n!.
+
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Constraints</b>
+				<br>
+				1 ≤ n ≤ 10^9<br>
+				Time limit : 1.00s<br>
+				Memory limit : 512MB<br>
+				<br><br>
+				<b style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E;">Example</b>
+				<br><br>
+
+				Input : <br>
+				<a>20</a><br><br>
+
+
+				Output : <br>
+			 <a>4
+				</a><br><br>
+				<p style="font-family: Arial, Helvetica, sans-serif; color      : #A65E4E; font-size:30px;">Solution</p>
+
+
+				<p style="font-size:25px ;  text-align: justify">
+					How many trailing zeros does N! have? In other words, how many times can we divide N! by 10 until it's no longer divisible by 10.
+				</p>
+
+
+
+				<p style="font-size:25px ;  text-align: justify">
+					One way of finding this out is by looking at the prime factorization of N!. If 10 divides N! then the prime factorization of 10 must be contained in the prime factorization of N! and since 10=2x5 then the question becomes how many pairs {2,5} are in N! prime factorization.
+				</p>
+
+				<div width=100%>
+					<img src="images/factorial_expression.svg" width=100% style="border-radius:15px">
+				</div>
+
+				<p style="font-size:25px ;  text-align: justify">
+					Since 2 is a much more common factor and the pair requires both numbers to be present the answer becomes the number of times 5 appears in N! prime factorization. Given that N! is the product of all positive integers less than or equal to N we can conclude that the answer is the number of times 5 comes up in the prime factorization of all integers belonging to the interval [1, N].
+				</p>
+
+				<p style="font-size:25px ;  text-align: justify">
+					One might guess that the answer is N/5 since that's the number of multiples of 5 in the interval but this would be wrong since 25 has two 5's in its prime factorization and 125 has three and so on. To solve this problem we must take into account every multiple of every power of five less than N. So if N=50 the answer would be 50/5 + 50/25.
+				</p>
+
+				<p style="font-size:25px ;  text-align: justify">
+					The following expression shows a generalization for any given N (where M is the largest integer such that 5^M ≤ N)
+				</p><br>
+
+				<div width=100%>
+					<img src="images/final_expression.svg" width=100% style="border-radius:15px">
+				</div>
+
+				<br>
+
+
+<pre style='color:#D9C0A3;background:#323840ff; border-radius:15px;font-size:0.9vw;'><span style='color:#A65E4E; '>#</span><span style='color:#A65E4E; '>include </span><span style='color:#ff9955ff; '>&lt;</span><span style='color:#D9C0A3; '>bits/stdc++.h</span><span style='color:#ff9955ff; '>></span>
+<span style='color:#ff9955ff; font-weight:bold; '>using</span> <span style='color:#ff9955ff; font-weight:bold; '>namespace</span> <span style='color:#D9C0A3; '>std</span><span style='color:#BF8969; '>;</span>
+
+<span style='color:#ff9955ff; font-weight:bold; '>int</span> <span style='color:#D9C0A3; '>main</span><span style='color:#BF8969; '>(</span><span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+    <span style='color:#ff9955ff; font-weight:bold; '>long</span> n<span style='color:#BF8969; '>,</span> current <span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>5</span><span style='color:#BF8969; '>,</span> answer <span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>0</span><span style='color:#BF8969; '>;</span>
+    <span style='color:#BF8969; '>cin</span> <span style='color:#BF8969; '>></span><span style='color:#BF8969; '>></span> n<span style='color:#BF8969; '>;</span>
+    <span style='color:#ff9955ff; font-weight:bold; '>while</span> <span style='color:#BF8969; '>(</span>current <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>=</span> n<span style='color:#BF8969; '>)</span> <span style='color:#BF8969; '>{</span>
+        answer <span style='color:#BF8969; '>+</span><span style='color:#BF8969; '>=</span> n <span style='color:#BF8969; '>/</span> current<span style='color:#BF8969; '>;</span>
+        current <span style='color:#BF8969; '>*</span><span style='color:#BF8969; '>=</span> <span style='color:#D9C0A3; '>5</span><span style='color:#BF8969; '>;</span>
+    <span style='color:#BF8969; '>}</span>
+    <span style='color:#BF8969; '>cout</span> <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> answer <span style='color:#BF8969; '>&lt;</span><span style='color:#BF8969; '>&lt;</span> <span style='color:#BF8969; '>endl</span><span style='color:#BF8969; '>;</span>
+    <span style='color:#ff9955ff; font-weight:bold; '>return</span> <span style='color:#D9C0A3; '>0</span><span style='color:#BF8969; '>;</span>
+<span style='color:#BF8969; '>}</span>
+</pre>
+<!--Created using ToHtml.com on 2021-07-12 00:45:22 UTC -->
+
+				</p>
+				<br>
+				<p style="font-size:25px ;  text-align: justify">
+					This algorithm runs in time complexity of O(log_5(n)) and space complexity of O(1).
+				</p>
+				<br>
+		</div>
+	</body>
+</html>
